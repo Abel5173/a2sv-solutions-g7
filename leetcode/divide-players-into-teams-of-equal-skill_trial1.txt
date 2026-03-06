@@ -1,0 +1,13 @@
+class Solution:
+    def dividePlayers(self, skill: List[int]) -> int:
+        skill.sort()
+        t = 0
+        i, j = 0, len(skill)-1
+        ts = skill[i]+skill[j]
+        while i < j:
+            cs = skill[i] + skill[j]
+            if cs != ts:
+                return -1
+            t += skill[i]*skill[j]
+            i, j = i + 1, j - 1
+        return t
