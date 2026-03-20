@@ -1,0 +1,15 @@
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        cnt = defaultdict(int)
+        l, max_f = 0, 0
+
+        for r in range(len(fruits)):
+            cnt[fruits[r]] += 1
+
+            while len(cnt) > 2:
+                cnt[fruits[l]] -= 1
+                if cnt[fruits[l]] == 0:
+                    del cnt[fruits[l]]
+                l += 1
+            max_f = max(max_f, r - l + 1)
+        return max_f
