@@ -1,0 +1,15 @@
+class Solution:
+    def countGood(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        l, p, res = 0, 0, 0
+        f = defaultdict(int)
+        
+        for r in range(n):
+            p += f[nums[r]] 
+            f[nums[r]] += 1
+            while p >= k:
+                res += n - r
+                f[nums[l]] -= 1
+                p -= f[nums[l]]
+                l += 1
+        return res
