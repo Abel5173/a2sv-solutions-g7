@@ -1,0 +1,15 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        n, m = len(s1), len(s2)
+        c = Counter(s1)
+        i, j = 0, n-1
+        while j < m:
+            t = Counter(s2[i:j+1])
+            if c == t:
+                return True
+            i += 1
+            j += 1
+
+        return False
+
+        
