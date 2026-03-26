@@ -1,0 +1,14 @@
+class Solution:
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        i, j = 0, k - 1
+        n = len(blocks)
+        min_op = float('inf')
+        
+        while j < n:
+            whites = blocks[i:j+1].count('W')
+            min_op = min(min_op, whites)
+            
+            i += 1
+            j += 1
+        
+        return min_op
